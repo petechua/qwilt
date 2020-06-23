@@ -86,10 +86,12 @@ def check_preflight(playlist_type,flight_type):
 		print(flight_type+" in ABR playlist...")
 		print("Number of required successful preflight items: " + str(num_preflight_condition))
 		# Preflight for playlists
-		for variant in resolution_list:
+		#Delete - for variant in resolution_list:
+		for variant in hls_playlist.playlists:
 			#print(" ".join(map(str,variant)))
-			temp_playlist=baseurl+" ".join(map(str,variant))+"/index.m3u8"
-			#print(temp_playlist)
+			#temp_playlist=baseurl+" ".join(map(str,variant))+"/index.m3u8"
+			temp_playlist=baseurl+str(variant.uri)
+			print(temp_playlist)
 			if(check_playlist(temp_playlist)) == "true":
 				num_preflight_success += 1
 		
