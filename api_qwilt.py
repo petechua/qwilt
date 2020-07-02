@@ -16,11 +16,11 @@ url_client_mapping="https://client-mapping.cqloud.com/api/1/cache-group"
 url_log_reporting="https://reporting.cqloud.com/mdls"
 url_qn_local_status="https://{QN_Delivery_IP}/static-content/status.json"
 ### Static inputs ###
-#username="@qwilt.com"
-#password="yourqcpassword"
-#qnIds=""
-#client_ip="x.x.x.x"
-#qn_delivery_ip="x.x.x.x"
+#username="@qwilt.com" #---> QC Services username
+#password="yourqcpassword" #----> QC Service password
+#qnIds="" #------> Qwilt Node ID
+#client_ip="x.x.x.x" #-----> Client IP to be tested against Client Mapping API
+#qn_delivery_ip="x.x.x.x" #----> Delivery IP of QN
 
 def get_api_response(api_desc,api_url,cq_login_token,params):
 	headers= {'Cookie': 'cqloudLoginToken='+cq_login_token}
@@ -56,8 +56,8 @@ def get_qn_local_status(api_desc,api_url,cq_login_token,qn_ip):
 	print(json.dumps(data, indent=4, sort_keys=True))
 
 ### Get User inputs ###
-username = raw_input("Enter username: ")
-password = getpass.getpass(prompt="Enter password: ")
+username = raw_input("Enter your QC Services username: ")
+password = getpass.getpass(prompt="Enter your password: ")
 qnIds = raw_input("Enter qnID: ")
 client_ip = raw_input("Enter Client IP: ")
 qn_delivery_ip = raw_input("Enter QN Delivery IP: ")
