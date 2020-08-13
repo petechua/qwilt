@@ -31,7 +31,7 @@ on_screen_log="false" # Display log output on screen during request?
 
 def check_playlist(input_url):
 	#print(input_url)
-	preflight_playlist_response=requests.head(input_url)
+	preflight_playlist_response=requests.head(input_url,verify=False)
 	if preflight_playlist_response.status_code==200 and (preflight_playlist_response.headers['content-type']=="application/vnd.apple.mpegurl"):
 		return "true"
 	else:
@@ -60,7 +60,7 @@ def fetch_segments(input_url):
 	global num_200_segment
 	global num_local_segment
 	global num_relay_segment
-	segment_response=requests.get(input_url)
+	segment_response=requests.get(input_url,verify=False)
 	if segment_response.status_code==200 and segment_response.headers['content-type']=="video/mp2t":
 		try:
 			logentry=now.strftime("%D:%H:%M:%S") + " " + str(segment_response.status_code) + " " + segment_response.headers['X-OC-Service-Type'] + " " + segment_response.headers['content-type'] + " " + input_url + "\n"
