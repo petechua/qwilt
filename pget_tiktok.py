@@ -14,7 +14,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 ## Configurations ##
 website = "toktok.com"
-header_Referer = {'Referer: https://www.tiktok.com/'}
+header_Referer = {'Referer': 'https://www.tiktok.com/'}
 header_UA = {'user-agent': 'my-app/0.0.1'}
 
 ## User inputs ##
